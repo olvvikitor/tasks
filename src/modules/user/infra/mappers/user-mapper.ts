@@ -22,11 +22,12 @@ export class UserMapper {
           telefone: user.telefone, 
           password: user.password
         }
-
         userList.push(userEntity)
+        
       })
     return userList
   }
+
  static parseToSchema(user: User): UserSchema {
     const userSchema = new UserSchema();
 
