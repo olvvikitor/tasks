@@ -3,6 +3,7 @@ import { CreateUserDto } from '../domain/dtos/create-user-dto';
 import { IUserRepository } from '../domain/repository/IUserRpository';
 import { User } from '../domain/User';
 import { IEmailProvider } from 'src/shared/providers/interface/IMailProvider';
+import { CreateTokenService } from 'src/modules/tokens/services/create-token.service';
 
 @Injectable()
 export class CreateUserService{
@@ -10,12 +11,18 @@ export class CreateUserService{
     @Inject('IUserRepository')
     private userRepository:IUserRepository<User>,
     @Inject('IMailProvider')
-    private mailService:IEmailProvider
+    private mailService:IEmailProvider,
+    @Inject()
+    private createTokenService:CreateTokenService
   ){} 
 
-  async execute(createUserDto: CreateUserDto):Promise<User>{
+  async execute(createUserDto: CreateUserDto):Promise<void>{  
 
+    const user = await this.userRepository.create(createUserDto)
 
+    const token  = await this.createTokenService.execute(user.id)
+    console.log(token)
+    
     await this.mailService.sendMail(createUserDto.email, `
         <!DOCTYPE html>
         <html lang="en">
@@ -79,12 +86,12 @@ export class CreateUserService{
         <body>
           <div class="email-container">
             <div class="email-header">
-              <h1>Bem-vindo(a) à [Nome da Aplicação]!</h1>
+              <h1>Bem-vindo(a) à Task!</h1>
             </div>
             <div class="email-body">
               <p>Olá, obrigado por se cadastrar! Estamos quase lá.</p>
               <p>Por favor, clique no botão abaixo para confirmar seu e-mail:</p>
-              <a href="https://seusite.com/confirm-email?token=TOKEN_AQUI" class="button">Confirmar e-mail</a>
+              <a href="http://localhost:3000/user/confirm-email/${user.id}/?token=${token}" class="button">Confirmar e-mail</a>
               <p>Se você não criou esta conta, ignore este e-mail.</p>
             </div>
             <div class="email-footer">
@@ -93,8 +100,6 @@ export class CreateUserService{
           </div>
         </body>
         </html>
-      `);    
-    return await this.userRepository.create(createUserDto)
-    
+      `);  
   }
 }

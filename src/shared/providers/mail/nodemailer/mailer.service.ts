@@ -14,7 +14,7 @@ export class MailerProvider implements IEmailProvider {
   async sendMail(email: string, message: string): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: this.configService.get('SMTP_TEST_MAIL'), // Remetente
+      from: this.configService.get('SMTP_TEST_MAIL'),
       subject: 'Confirmação de e-mail',
       html: message
     })

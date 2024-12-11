@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 import { CreateUserDto } from '../../domain/dtos/create-user-dto';
 import { CreateUserService } from '../../services/create-user.service';
 import { FindAllUserService } from '../../services/find-all.service';
+import { VerifyAccountService } from '../../services/verify-account.service';
 
 
 @Controller('user')
@@ -18,5 +19,10 @@ export class UserController{
   async findAll(){
     const findAllUserService = this.moduleRef.get(FindAllUserService)
     return await findAllUserService.execute()
+  }
+  @Get('/confirm-email/:id')
+  async verifyAccount(@Param('id') id: string, @Query('token') token: string){
+    const verifyAccount = this.moduleRef.get(VerifyAccountService, {strict: true});
+    return await verifyAccount.execute(id, token)
   }
 }

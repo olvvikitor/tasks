@@ -1,29 +1,35 @@
 import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MailerProvider } from './mailer.service';
 
 @Module({
-  imports:[
-    MailerModule.forRoot({
-      transport:{
-        host: 'smtp.mailgun.org',
-        secure:false,
-        port: 587,
-        auth:{
-          user: 'postmaster@sandboxb9dacb511b404059aad7ed4cca931f6b.mailgun.org',
-          pass:'42d10daed142fc381ba1d2daa5ae6ba1-f55d7446-6a546dec'
+  imports: [
+    ConfigModule,
+    MailerModule.forRootAsync({
+      
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => ({
+        transport: {
+          host: configService.get<string>('SMTP_HOST', 'smtp.mailersend.net'), // Host com valor padrão
+          port: configService.get<number>('SMTP_PORT', 587), // Porta com valor padrão
+          secure: false,
+          auth: {
+            user: configService.get<string>('SMTP_USERNAME'), // Usuário vindo do .env
+            pass: configService.get<string>('SMTP_PASSWORD'), // Senha vindo do .env
+          },
+          ignoreTLS: false,
         },
-        ignoreTLS: true,
-      },
-      defaults:{
-        from:'"'
-      }
-    })
+        defaults: {
+          from: `"No Reply" <${configService.get<string>('MAIL_FROM', 'noreply@seusite.com')}>`,
+        },
+      }),
+    }),
   ],
-  providers:[{provide:'IMailProvider', useClass: MailerProvider}],
-  exports:[MailerModule, 'IMailProvider']
+  providers: [{ provide: 'IMailProvider', useClass: MailerProvider }],
+  exports: [MailerModule, 'IMailProvider']
 })
-export class MailModule{
+export class MailModule {
 
 }

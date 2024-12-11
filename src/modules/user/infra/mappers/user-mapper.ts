@@ -8,7 +8,8 @@ export class UserMapper {
       email: user.email,
       nome: user.nome,
       telefone: user.telefone,
-      password: user.password
+      password: user.password,
+      isVerified: user.isVerified
     }
   }
   static parseToList(users: UserSchema[]):User[]{
@@ -20,7 +21,8 @@ export class UserMapper {
           email:user.email,
           nome: user.nome,
           telefone: user.telefone, 
-          password: user.password
+          password: user.password,
+          isVerified: user.isVerified
         }
         userList.push(userEntity)
         
@@ -35,7 +37,8 @@ export class UserMapper {
     userSchema.email= user.email,
     userSchema.nome= user.nome,
     userSchema.telefone =  user.telefone,
-    userSchema.password = user.password
+    userSchema.password = user.password,
+    userSchema.isVerified = user.isVerified
 
     return userSchema
   }

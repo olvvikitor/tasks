@@ -16,5 +16,8 @@ export class UserSchema extends Document{
   @Prop({type:String, required: true})
   telefone:string
 
+  @Prop({type:Boolean, default:false})
+  isVerified : boolean
+
 }
 export const UserModel = SchemaFactory.createForClass(UserSchema)

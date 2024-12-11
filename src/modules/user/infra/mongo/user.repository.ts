@@ -14,6 +14,15 @@ export class UserRepository implements IUserRepository<UserSchema>{
     @InjectModel('User') private model:Model<UserSchema>) {
     
   }
+ async update(id: any, user: Partial<UserSchema>): Promise<void> {
+    const userUpdated = await this.model.updateOne({_id: id}, user)
+    
+  }
+  async findById(idUser: any): Promise<User> {
+    return await this.model.findOne({
+      _id: idUser
+    })
+  }
 
   async create(user: UserSchema): Promise<User> {
     const userCreated = await this.model.create(user);
