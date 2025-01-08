@@ -1,11 +1,11 @@
-# compiled output
-/dist
-/node_modules
-/build
+# Compiled output
+/dist/
+/node_modules/
+/build/
 
 # Logs
-logs
-*.log
+/logs/
+/*.log
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
@@ -16,17 +16,17 @@ lerna-debug.log*
 .DS_Store
 
 # Tests
-/coverage
-/.nyc_output
+/coverage/
+/.nyc_output/
 
 # IDEs and editors
-/.idea
-.project
+/.idea/
+/.project
 .classpath
 .c9/
-*.launch
+/*.launch
 .settings/
-*.sublime-workspace
+/*.sublime-workspace
 
 # IDE - VSCode
 .vscode/*
@@ -42,15 +42,20 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
-# temp directory
-.temp
-.tmp
+# Temp directory
+/temp/
+/.tmp/
 
 # Runtime data
-pids
-*.pid
+/pids/
+/*.pid
 *.seed
 *.pid.lock
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Ignorar arquivos em 3 pastas específicas
+/api-gateway/*
+/mail-services/*
+/user-services/*
