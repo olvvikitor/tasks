@@ -1,61 +1,134 @@
-# Compiled output
-/dist/
-/node_modules/
-/build/
 
-# Logs
-/logs/
-/*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+# Ignorar arquivos sensíveis dentro de cada pasta específica
+/api-gateway/*.env
+/api-gateway/*.log
+/api-gateway/*.pid
+/api-gateway/*.lock
 
-# OS
-.DS_Store
+/mail-services/*.env
+/mail-services/*.log
+/mail-services/*.pid
+/mail-services/*.lock
 
-# Tests
-/coverage/
-/.nyc_output/
+/user-services/*.env
+/user-services/*.log
+/user-services/*.pid
+/user-services/*.lock
 
-# IDEs and editors
-/.idea/
-/.project
-.classpath
-.c9/
-/*.launch
-.settings/
-/*.sublime-workspace
+# Ignorar arquivos e pastas padrões globais dentro das pastas específicas
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+/api-gateway/node_modules/
+/api-gateway/dist/
+/api-gateway/build/
+/api-gateway/temp/
+/api-gateway/.tmp/
+/api-gateway/coverage/
+/api-gateway/logs/
+/api-gateway/*.log
+/api-gateway/npm-debug.log*
+/api-gateway/pnpm-debug.log*
+/api-gateway/yarn-debug.log*
+/api-gateway/yarn-error.log*
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+/mail-services/node_modules/
+/mail-services/dist/
+/mail-services/build/
+/mail-services/temp/
+/mail-services/.tmp/
+/mail-services/coverage/
+/mail-services/logs/
+/mail-services/*.log
+/mail-services/npm-debug.log*
+/mail-services/pnpm-debug.log*
+/mail-services/yarn-debug.log*
+/mail-services/yarn-error.log*
 
-# Temp directory
-/temp/
-/.tmp/
+/user-services/node_modules/
+/user-services/dist/
+/user-services/build/
+/user-services/temp/
+/user-services/.tmp/
+/user-services/coverage/
+/user-services/logs/
+/user-services/*.log
+/user-services/npm-debug.log*
+/user-services/pnpm-debug.log*
+/user-services/yarn-debug.log*
+/user-services/yarn-error.log*
 
-# Runtime data
-/pids/
-/*.pid
-*.seed
-*.pid.lock
+# IDEs and editors dentro das pastas específicas
+/api-gateway/.idea/
+/api-gateway/.project
+/api-gateway/.classpath
+/api-gateway/.c9/
+/api-gateway/*.launch
+/api-gateway/.settings/
+/api-gateway/*.sublime-workspace
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+/mail-services/.idea/
+/mail-services/.project
+/mail-services/.classpath
+/mail-services/.c9/
+/mail-services/*.launch
+/mail-services/.settings/
+/mail-services/*.sublime-workspace
 
-# Ignorar arquivos em 3 pastas específicas
-/api-gateway/*
-/mail-services/*
-/user-services/*
+/user-services/.idea/
+/user-services/.project
+/user-services/.classpath
+/user-services/.c9/
+/user-services/*.launch
+/user-services/.settings/
+/user-services/*.sublime-workspace
+
+# IDE - VSCode dentro das pastas específicas
+/api-gateway/.vscode/
+/api-gateway/*.code-workspace
+
+/mail-services/.vscode/
+/mail-services/*.code-workspace
+
+/user-services/.vscode/
+/user-services/*.code-workspace
+
+# dotenv environment variable files dentro das pastas específicas
+/api-gateway/.env
+/api-gateway/.env.development.local
+/api-gateway/.env.test.local
+/api-gateway/.env.production.local
+/api-gateway/.env.local
+
+/mail-services/.env
+/mail-services/.env.development.local
+/mail-services/.env.test.local
+/mail-services/.env.production.local
+/mail-services/.env.local
+
+/user-services/.env
+/user-services/.env.development.local
+/user-services/.env.test.local
+/user-services/.env.production.local
+/user-services/.env.local
+
+# Runtime data dentro das pastas específicas
+/api-gateway/pids/
+/api-gateway/*.pid
+/api-gateway/*.seed
+/api-gateway/*.pid.lock
+
+/mail-services/pids/
+/mail-services/*.pid
+/mail-services/*.seed
+/mail-services/*.pid.lock
+
+/user-services/pids/
+/user-services/*.pid
+/user-services/*.seed
+/user-services/*.pid.lock
+
+# Diagnostic reports dentro das pastas específicas
+/api-gateway/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+/mail-services/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+/user-services/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
