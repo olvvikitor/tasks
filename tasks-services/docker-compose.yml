@@ -1,0 +1,15 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin-task
+      - POSTGRES_PASSWORD=task@1
+      - POSTGRES_DB=task
+    ports:
+      - 8082:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

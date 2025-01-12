@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { UserController } from './user.controller';
 import { UserGatewayService } from './user.gateway.service';
+import { TaskModule } from 'src/task/task.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { UserGatewayService } from './user.gateway.service';
           durable: false
         }
       }
-    }])
+    }]),
+    TaskModule
   ],
   controllers: [UserController],
   providers: [UserGatewayService],

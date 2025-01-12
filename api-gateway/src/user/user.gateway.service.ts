@@ -2,7 +2,7 @@ import { Client, ClientProxy, Transport } from '@nestjs/microservices';
 import { CreateUserDto } from './dto/dtos/create-user-dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
-import { ValidateAccountDto } from '../../../user-services/src/modules/user/domain/dtos/vaidate-account-dto';
+import { ValidateAccountDto } from './dto/validate-account-dto';
 
 
 @Injectable()
@@ -17,4 +17,5 @@ export class UserGatewayService {
   async validateAccount(data:ValidateAccountDto){
     this.clientProxy.emit('validate-account', data)
   }
+
 }
